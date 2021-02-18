@@ -1,1 +1,1 @@
-web: gunicorn swagur.wsgi
+web: cd swagur && gunicorn swagur.wsgi
