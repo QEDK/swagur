@@ -18,7 +18,7 @@
             <img src="{% static "swagur.png" %}" style="max-width:10% !important" class="img-fluid" alt="Logo">
           </div>
         </div>
-        <div class="row">
+        <div class="row m-3">
           <div class="col-sm text-center">
             <h1>Swagur</h1>
           </div>
@@ -26,8 +26,32 @@
         <div class="row">
           <div class="col-lg text-center">
             <div class="btn-group-vertical">
-              <button type="button" class="px-5 btn btn-lg btn-outline-primary">User</button>
-              <button type="button" class="px-5 btn btn-lg btn-outline-primary">Market</button>
+              <button type="button" class="px-5 btn btn-lg btn-outline-primary dropdown-toggle" data-bs-toggle="collapse" data-bs-target="#collapseUser" aria-expanded="false" aria-controls="collapseUser">User</button>
+              <button type="button" class="px-5 btn btn-lg btn-outline-primary dropdown-toggle" data-bs-toggle="collapse" data-bs-target="#collapseMarket" aria-expanded="false" aria-controls="collapseMarket">Market</button>
+              <div class="collapse" id="collapseUser">
+                <div class="card card-body">
+                  <form class="row">
+                    <div class="col-auto">
+                      <input type="text" class="form-control" id="userid" placeholder="Enter user ID (i.e. address)">
+                    </div>
+                    <div class="col-auto">
+                      <button type="submit" class="btn btn-primary mb-3">Submit</button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+              <div class="collapse" id="collapseMarket">
+                <div class="card card-body">
+                  <form class="row">
+                    <div class="col-auto">
+                      <input type="text" class="form-control" id="marketid" placeholder="Enter market ID (i.e. address)">
+                    </div>
+                    <div class="col-auto">
+                      <button type="submit" class="btn btn-primary mb-3">Submit</button>
+                    </div>
+                  </form>
+                </div>
+              </div>
             </div>
           </div>
         </div>
