@@ -20,4 +20,6 @@ from augur import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index),
+    path('user/', views.user),
+    path('market/', views.market),
 ]
