@@ -1,9 +1,9 @@
+{% load static %}
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    {% load static %}
     <link rel="icon" href="{% static "favicon.ico" %}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
     <link href="{% static "style.css" %}" rel="stylesheet">
@@ -31,7 +31,7 @@
                 <form class="row" action="/user/" method="post">
                   {% csrf_token %}
                   <div class="col-auto">
-                    <input type="text" required class="form-control" id="user_id" placeholder="Enter user ID (i.e. address)">
+                    <input type="text" required class="form-control" id="user_id" name="user_id" placeholder="Enter user ID (i.e. address)">
                   </div>
                   <div class="col text-center">
                     <button type="submit" class="btn btn-primary mb-3">Submit</button>
@@ -47,7 +47,7 @@
                 <form class="row" action="/market/" method="post">
                   {% csrf_token %}
                   <div class="col-auto">
-                    <input type="text" required class="form-control" id="market_id" placeholder="Enter market ID (i.e. address)">
+                    <input type="text" required class="form-control" id="market_id" name="market_id" placeholder="Enter market ID (i.e. address)">
                   </div>
                   <div class="col text-center">
                     <button type="submit" class="btn btn-primary mb-3">Submit</button>
