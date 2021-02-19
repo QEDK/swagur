@@ -27,6 +27,23 @@ def userquery(user_id):
       }
     }'''))
 
+def marketquery(market_id):
+    return client.execute(gql('''{
+      market (id: \"''' + market_id + '''\") {
+        timestamp,
+        creator {
+          id
+        },
+        owner {
+          id
+        },
+        description,
+        longDescription,
+        status,
+        marketType
+      }
+    }'''))
+
 def index(request):
     return render(request, "augur/index.html")
 
@@ -40,4 +57,4 @@ def market(request):
     if request.method == "GET":
         return HttpResponse("App is running")
     elif request.method == "POST":
-        return HttpResponse(request.POST["market_id"])
+        return HttpResponse(str(marketquery(request.POST["market_id"])))
