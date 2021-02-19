@@ -24,33 +24,33 @@
           </div>
         </div>
         <div class="row">
-          <div class="col-lg text-center">
-            <div class="btn-group-vertical">
-              <button type="button" class="px-5 btn btn-lg btn-outline-primary dropdown-toggle" data-bs-toggle="collapse" data-bs-target="#collapseUser" aria-expanded="false" aria-controls="collapseUser">User</button>
-              <button type="button" class="px-5 btn btn-lg btn-outline-primary dropdown-toggle" data-bs-toggle="collapse" data-bs-target="#collapseMarket" aria-expanded="false" aria-controls="collapseMarket">Market</button>
-              <div class="collapse" id="collapseUser">
-                <div class="card card-body">
-                  <form class="row">
-                    <div class="col-auto">
-                      <input type="text" class="form-control" id="userid" placeholder="Enter user ID (i.e. address)">
-                    </div>
-                    <div class="col-auto">
-                      <button type="submit" class="btn btn-primary mb-3">Submit</button>
-                    </div>
-                  </form>
-                </div>
+          <div class="col-sm text-center">
+            <button type="button" class="px-5 btn btn-lg btn-outline-primary dropdown-toggle" data-bs-toggle="collapse" data-bs-target="#collapseUser" aria-expanded="false" aria-controls="collapseUser">User</button>
+            <div class="collapse" id="collapseUser">
+              <div class="card card-body m-2">
+                <form class="row" action="/user" method="post">
+                  <div class="col-auto">
+                    <input type="text" required class="form-control" id="userid" value="{{ user_id }}" placeholder="Enter user ID (i.e. address)">
+                  </div>
+                  <div class="col text-center">
+                    <button type="submit" class="btn btn-primary mb-3">Submit</button>
+                  </div>
+                </form>
               </div>
-              <div class="collapse" id="collapseMarket">
-                <div class="card card-body">
-                  <form class="row">
-                    <div class="col-auto">
-                      <input type="text" class="form-control" id="marketid" placeholder="Enter market ID (i.e. address)">
-                    </div>
-                    <div class="col-auto">
-                      <button type="submit" class="btn btn-primary mb-3">Submit</button>
-                    </div>
-                  </form>
-                </div>
+            </div>
+          </div>
+          <div class="col-sm text-center">
+            <button type="button" class="px-5 btn btn-lg btn-outline-primary dropdown-toggle" data-bs-toggle="collapse" data-bs-target="#collapseMarket" aria-expanded="false" aria-controls="collapseMarket">Market</button>
+            <div class="collapse" id="collapseMarket">
+              <div class="card card-body m-2">
+                <form class="row" action="/market" method="post">
+                  <div class="col-auto">
+                    <input type="text" required class="form-control" id="marketid" value="{{ market_id }}" placeholder="Enter market ID (i.e. address)">
+                  </div>
+                  <div class="col text-center">
+                    <button type="submit" class="btn btn-primary mb-3">Submit</button>
+                  </div>
+                </form>
               </div>
             </div>
           </div>
