@@ -1,0 +1,55 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="{% static "favicon.ico" %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link href="{% static "style.css" %}" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+    <title>Swagur/user</title>
+  </head>
+  <body>
+    <div class="jumbotron vertical-center">
+      <div class="container text-center">
+        {% if result %}
+        <h1>User {{ result.id }}</h1>
+        <div class="card m-2">
+          <div class="card-header">
+            Markets created
+          </div>
+          <div class="card m-2">
+          {% for market in result.marketsCreated %}
+            <div class="card-header">
+              {{ market.id }}
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">Description: {{ market.description }}</li>
+              <li class="list-group-item">Status: {{ market.status }}</li>
+            {% empty %}
+            <h2>No markets created</h2>
+            {% endfor %}
+          </div>
+        <div class="card m-2">
+          <div class="card-header">
+            Token balances
+          </div>
+          {% for token in result.userTokenBalances %}
+          <div class="card m-2">
+            <div class="card-header">
+              {{ token.token.id }}
+            </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Type: {{ token.token.tokenType }}</li>
+            <li class="list-group-item">Balance: {{ token.balance }}</li>
+          </ul>
+          </div>
+        </div>
+      </div>
+      {% else %}
+      <h1>User not found</h1>
+      {% endif %}
+    </div>
+  </body>
+</html>

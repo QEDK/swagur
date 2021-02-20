@@ -11,6 +11,7 @@ client = Client(transport=transport, fetch_schema_from_transport=True)
 def userquery(user_id):
     return client.execute(gql('''{
       user(id: \"''' + user_id + '''\") {
+        id,
         userTokenBalances(first: 100) {
           token {
             id,
@@ -30,6 +31,7 @@ def userquery(user_id):
 def marketquery(market_id):
     return client.execute(gql('''{
       market (id: \"''' + market_id + '''\") {
+        id,
         timestamp,
         creator {
           id
@@ -51,7 +53,9 @@ def user(request):
     if request.method == "GET":
         return HttpResponse("App is running")
     elif request.method == "POST":
-        return HttpResponse(str(userquery(request.POST["user_id"])))
+        result = userquery(request.POST["user_id"])
+        print(result)
+        return render(request, "augur/user.html", context={"result": result["user"]})
 
 def market(request):
     if request.method == "GET":
