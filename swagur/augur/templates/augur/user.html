@@ -12,16 +12,16 @@
   </head>
   <body>
     <div class="jumbotron vertical-center">
-      <div class="container text-center">
+      <div class="container">
         {% if result %}
-        <h1>User {{ result.id }}</h1>
+        <h2 class="text-center">User {{ result.id }}</h2>
         <div class="card m-2">
-          <div class="card-header">
+          <div class="card-header text-center">
             Markets created
           </div>
           <div class="card m-2">
           {% for market in result.marketsCreated %}
-            <div class="card-header">
+            <div class="card-header text-center">
               {{ market.id }}
             </div>
             <div class="table-responsive m-2">
@@ -44,12 +44,12 @@
           </div>
         </div>
         <div class="card m-2">
-          <div class="card-header">
+          <div class="card-header text-center">
             Token balances
           </div>
           {% for token in result.userTokenBalances %}
           <div class="card m-2">
-            <div class="card-header">
+            <div class="card-header text-center">
               {{ token.token.id }}
             </div>
             <div class="table-responsive m-2">
@@ -70,7 +70,7 @@
           {% endfor %}
         </div>
         {% else %}
-          <h1>User not found</h1>
+          <h1 class="text-center">User not found</h1>
         {% endif %}
         <div class="d-grid card">
           <button class="btn btn-primary" type="button" onclick="window.history.back()">← Back</button>

@@ -55,9 +55,19 @@ def user(request):
         result = userquery(request.POST["user_id"])
         return render(request, "augur/user.html", context={"result": result["user"]})
 
+def userid(request, id):
+    if request.method == "GET":
+        result = userquery(id)
+        return render(request, "augur/user.html", context={"result": result["user"]})
+
 def market(request):
     if request.method == "GET":
         return HttpResponse("App is running")
     elif request.method == "POST":
         result = marketquery(request.POST["market_id"])
+        return render(request, "augur/market.html", context={"market": result["market"]})
+
+def marketid(request, id):
+    if request.method == "GET":
+        result = marketquery(id)
         return render(request, "augur/market.html", context={"market": result["market"]})
