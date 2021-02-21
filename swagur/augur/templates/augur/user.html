@@ -69,13 +69,13 @@
           </div>
           {% endfor %}
         </div>
+        {% else %}
+          <h1>User not found</h1>
+        {% endif %}
+        <div class="d-grid card">
+          <button class="btn btn-primary" type="button" onclick="window.history.back()">← Back</button>
+        </div>
       </div>
-      {% else %}
-      <h1>User not found</h1>
-      {% endif %}
-    </div>
-    <div class="d-grid col-6 mx-auto">
-        <button class="btn btn-primary" type="button" onclick="window.history.back()">← Back</button>
     </div>
   </body>
 </html>
