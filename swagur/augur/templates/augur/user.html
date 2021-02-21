@@ -22,7 +22,7 @@
           <div class="card m-2">
           {% for market in result.marketsCreated %}
             <div class="card-header text-center">
-              {{ market.id }}
+              {{ market.id }} <a class="no-underline" href="../market/{{ market.id }}">🔍</a>
             </div>
             <div class="table-responsive m-2">
               <table class="table table-hover table-bordered">
