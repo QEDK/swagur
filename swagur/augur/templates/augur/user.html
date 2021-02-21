@@ -14,7 +14,7 @@
     <div class="jumbotron vertical-center">
       <div class="container">
         {% if result %}
-        <h2 class="text-center">User {{ result.id }}</h2>
+        <h2 class="text-center m-5">User {{ result.id }}</h2>
         <div class="card m-2">
           <div class="card-header text-center">
             Markets created
@@ -70,7 +70,7 @@
           {% endfor %}
         </div>
         {% else %}
-          <h1 class="text-center">User not found</h1>
+          <h1 class="text-center m-5">User not found</h1>
         {% endif %}
         <div class="row align-items-start m-2">
           <div class="card col m-1">
