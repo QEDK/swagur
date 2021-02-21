@@ -4,8 +4,7 @@ from django.shortcuts import render
 from gql import gql, Client
 from gql.transport.requests import RequestsHTTPTransport
 
-transport = RequestsHTTPTransport(url="https://api.thegraph.com/subgraphs/name/protofire/augur-v2", verify=True,
-    retries=3)
+transport = RequestsHTTPTransport(url="https://api.thegraph.com/subgraphs/name/protofire/augur-v2")
 client = Client(transport=transport, fetch_schema_from_transport=True)
 
 def userquery(user_id):
@@ -54,11 +53,11 @@ def user(request):
         return HttpResponse("App is running")
     elif request.method == "POST":
         result = userquery(request.POST["user_id"])
-        print(result)
         return render(request, "augur/user.html", context={"result": result["user"]})
 
 def market(request):
     if request.method == "GET":
         return HttpResponse("App is running")
     elif request.method == "POST":
-        return HttpResponse(str(marketquery(request.POST["market_id"])))
+        result = marketquery(request.POST["market_id"])
+        return render(request, "augur/market.html", context={"market": result["market"]})
