@@ -24,13 +24,25 @@
             <div class="card-header">
               {{ market.id }}
             </div>
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item">Description: {{ market.description }}</li>
-              <li class="list-group-item">Status: {{ market.status }}</li>
+            <div class="table-responsive m-2">
+              <table class="table table-hover table-bordered">
+                <tbody>
+                  <tr>
+                    <td>Description</td>
+                    <td>{{ market.description }}</td>
+                  </tr>
+                  <tr>
+                    <td>Status</td>
+                    <td>{{ market.status }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
             {% empty %}
             <h2>No markets created</h2>
             {% endfor %}
           </div>
+        </div>
         <div class="card m-2">
           <div class="card-header">
             Token balances
@@ -40,16 +52,30 @@
             <div class="card-header">
               {{ token.token.id }}
             </div>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item">Type: {{ token.token.tokenType }}</li>
-            <li class="list-group-item">Balance: {{ token.balance }}</li>
-          </ul>
+            <div class="table-responsive m-2">
+              <table class="table table-hover table-bordered">
+                <tbody>
+                  <tr>
+                    <td>Type</td>
+                    <td>{{ token.token.tokenType }}</td>
+                  </tr>
+                  <tr>
+                    <td>Balance</td>
+                    <td>{{ token.balance }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
+          {% endfor %}
         </div>
       </div>
       {% else %}
       <h1>User not found</h1>
       {% endif %}
+    </div>
+    <div class="d-grid col-6 mx-auto">
+        <button class="btn btn-primary" type="button" onclick="window.history.back()">← Back</button>
     </div>
   </body>
 </html>
