@@ -1,3 +1,4 @@
+from datetime import datetime
 from django import forms
 from django.http import HttpResponse
 from django.shortcuts import render
@@ -20,7 +21,6 @@ def userquery(user_id):
         },
         marketsCreated(first: 100) {
           id,
-          timestamp,
           status,
           description
         }
@@ -32,10 +32,14 @@ def marketquery(market_id):
       market (id: \"''' + market_id + '''\") {
         id,
         timestamp,
+        endTimestamp,
         creator {
           id
         },
         owner {
+          id
+        },
+        designatedReporter {
           id
         },
         description,
@@ -52,8 +56,8 @@ def user(request):
     if request.method == "GET":
         return HttpResponse("App is running")
     elif request.method == "POST":
-        result = userquery(request.POST["user_id"])
-        return render(request, "augur/user.html", context={"result": result["user"]})
+        result = userquery(request.POST["user_id"])["user"]
+        return render(request, "augur/user.html", context={"result": result})
 
 def userid(request, id):
     if request.method == "GET":
@@ -64,10 +68,12 @@ def market(request):
     if request.method == "GET":
         return HttpResponse("App is running")
     elif request.method == "POST":
-        result = marketquery(request.POST["market_id"])
-        return render(request, "augur/market.html", context={"market": result["market"]})
+        result = marketquery(request.POST["market_id"])["market"]
+        return render(request, "augur/market.html", context={"market": result})
 
 def marketid(request, id):
     if request.method == "GET":
-        result = marketquery(id)
-        return render(request, "augur/market.html", context={"market": result["market"]})
+        result = marketquery(id)["market"]
+        result["timestamp"] = datetime.utcfromtimestamp(int(result["timestamp"])).strftime("%Y-%m-%d %H:%M:%S")
+        result["endTimestamp"] = datetime.utcfromtimestamp(int(result["endTimestamp"])).strftime("%Y-%m-%d %H:%M:%S")
+        return render(request, "augur/market.html", context={"market": result})

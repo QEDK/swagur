@@ -35,6 +35,10 @@
                   <td>{{ market.owner.id }} <a class="no-underline" href="../user/{{ market.owner.id }}">🔍</a></td>
                 </tr>
                 <tr>
+                  <td>Designated Reporter</td>
+                  <td>{{ market.designatedReporter.id }} <a class="no-underline" href="../user/{{ market.designatedReporter.id }}">🔍</a></td>
+                </tr>
+                <tr>
                   <td>Description</td>
                   <td>{{ market.longDescription }}</td>
                 </tr>
@@ -45,6 +49,14 @@
                 <tr>
                   <td>Type</td>
                   <td>{{ market.marketType }}</td>
+                </tr>
+                <tr>
+                  <td>Start time</td>
+                  <td>{{ market.timestamp }}</td>
+                </tr>
+                <tr>
+                  <td>End time</td>
+                  <td>{{ market.endTimestamp }}</td>
                 </tr>
               </tbody>
             </table>
