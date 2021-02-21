@@ -19,8 +19,8 @@
           <div class="card-header text-center">
             Markets created
           </div>
-          <div class="card m-2">
           {% for market in result.marketsCreated %}
+          <div class="card m-2">
             <div class="card-header text-center">
               {{ market.id }} <a class="no-underline" href="../market/{{ market.id }}">🔍</a>
             </div>
@@ -38,10 +38,10 @@
                 </tbody>
               </table>
             </div>
-            {% empty %}
-            <h2>No markets created</h2>
-            {% endfor %}
           </div>
+          {% empty %}
+          <h2>No markets created</h2>
+          {% endfor %}
         </div>
         <div class="card m-2">
           <div class="card-header text-center">
