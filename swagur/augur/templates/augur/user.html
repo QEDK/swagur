@@ -72,8 +72,13 @@
         {% else %}
           <h1 class="text-center">User not found</h1>
         {% endif %}
-        <div class="d-grid card">
-          <button class="btn btn-primary" type="button" onclick="window.history.back()">← Back</button>
+        <div class="row align-items-start m-2">
+          <div class="card col m-1">
+            <button class="btn btn-primary btn-block m-1" type="button" onclick="window.history.back()">← Back</button>
+          </div>
+          <div class="card col m-1">
+            <a href="/" class="btn btn-primary btn-block m-1" type="button">🏠 Home</a>
+          </div>
         </div>
       </div>
     </div>
