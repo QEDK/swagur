@@ -12,22 +12,44 @@
   </head>
   <body>
     <div class="jumbotron vertical-center">
-      <div class="container text-center">
+      <div class="container">
         {% if market %}
-        <h2>{{ market.description }}</h2>
+        <h2 class="text-center">{{ market.description }}</h2>
         <div class="card m-2">
-          <div class="card-header">
+          <div class="card-header text-center">
             Market details
           </div>
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item">ID: {{ market.id }}</li>
-              <li class="list-group-item">Creator: {{ market.creator.id }}</li>
-              <li class="list-group-item">Owner: {{ market.owner.id }}</li>
-              <li class="list-group-item">Description: {{ market.longDescription }}</li>
-              <li class="list-group-item">Status: {{ market.status }}</li>
-              <li class="list-group-item">Type: {{ market.marketType }}</li>
-            </ul>
+          <div class="table-responsive m-2">
+            <table class="table table-striped table-hover table-bordered">
+              <tbody>
+                <tr>
+                  <td>ID</td>
+                  <td>{{ market.id }}</td>
+                </tr>
+                <tr>
+                  <td>Creator</td>
+                  <td>{{ market.creator.id }}</td>
+                </tr>
+                <tr>
+                  <td>Owner</td>
+                  <td>{{ market.owner.id }}</td>
+                </tr>
+                <tr>
+                  <td>Description</td>
+                  <td>{{ market.longDescription }}</td>
+                </tr>
+                <tr>
+                  <td>Status</td>
+                  <td>{{ market.status }}</td>
+                </tr>
+                <tr>
+                  <td>Type</td>
+                  <td>{{ market.marketType }}</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
+        </div>
       </div>
       {% else %}
       <h1>Market not found</h1>
