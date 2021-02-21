@@ -69,6 +69,8 @@ def market(request):
         return HttpResponse("App is running")
     elif request.method == "POST":
         result = marketquery(request.POST["market_id"])["market"]
+        result["timestamp"] = datetime.utcfromtimestamp(int(result["timestamp"])).strftime("%Y-%m-%d %H:%M:%S")
+        result["endTimestamp"] = datetime.utcfromtimestamp(int(result["endTimestamp"])).strftime("%Y-%m-%d %H:%M:%S")
         return render(request, "augur/market.html", context={"market": result})
 
 def marketid(request, id):
